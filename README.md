@@ -2,14 +2,14 @@
 
 ![MIT](https://img.shields.io/badge/license-MIT-green) ![Python](https://img.shields.io/badge/python-3.12-blue) ![Docker](https://img.shields.io/badge/docker-ready-blue) ![Tests](https://img.shields.io/badge/tests-3_passing-brightgreen) ![Data](https://img.shields.io/badge/data-5y_live-important) ![Quiz](https://img.shields.io/badge/quiz-15_questions-orange)
 
-**🌐 Live interactive site: [`preview.html`](preview.html) — charts, beginner course, and a 15-question quiz that saves your progress. Publish it free with GitHub Pages (Settings → Pages → Deploy from branch, see §9).**
+**🌐 Live interactive site — open any one (all three render the same page): [`/`](https://m0-ar.github.io/stock-100-terms-validation-2026/) · [`/preview.html`](https://m0-ar.github.io/stock-100-terms-validation-2026/preview.html) · [`/docs/preview.html`](https://m0-ar.github.io/stock-100-terms-validation-2026/docs/preview.html) — charts, beginner course, and a 15-question quiz that saves your progress. Pages setup: Settings → Pages → Deploy from a branch (works with `/` or `/docs` source, see §9). Local file: [`preview.html`](preview.html).**
 
 | ![Hero — CEO summary + KPIs](docs/showcase/hero.png) | ![Dashboard — live charts](docs/showcase/dashboard.png) | ![Quiz — zero to pro](docs/showcase/quiz.png) |
 |---|---|---|
 
 ![Demo — hero → dashboard → quiz](docs/demo/demo.gif)
 
-*Video: the GIF above loops inline (427 KB). Full walkthrough: [`docs/demo/demo.mp4`](docs/demo/demo.mp4) · Interactive version: [`preview.html`](preview.html). Screenshots refresh from the real page — see §9.*
+*Video: the GIF above loops inline (427 KB). Full walkthrough: [`docs/demo/demo.mp4`](docs/demo/demo.mp4) · Interactive version (pick any): [`/`](https://m0-ar.github.io/stock-100-terms-validation-2026/) · [`/preview.html`](https://m0-ar.github.io/stock-100-terms-validation-2026/preview.html) · [`/docs/preview.html`](https://m0-ar.github.io/stock-100-terms-validation-2026/docs/preview.html). Screenshots refresh from the real page — see §9.*
 
 ## CEO summary — the whole repo in 5 sentences
 
@@ -186,7 +186,7 @@ Project layout: `src/config.py` (universe + live snapshot) · `src/data.py` (per
 
 ## 9. GitHub Pages — publish preview.html free
 
-1. Push this repo to GitHub. 2. **Settings → Pages** → Source: **Deploy from a branch**. 3. Branch **main**, folder **/ (root)** (or /docs if you relocate the file) → Save. 4. ~1 minute → `https://<you>.github.io/<repo>/preview.html`. The `.nojekyll` file keeps Pages serving the single-file site (Chart.js CDN + vanilla JS, no build) exactly as-is. Link the live URL at the top of this README.
+1. Push this repo to GitHub. 2. **Settings → Pages** → Source: **Deploy from a branch**. 3. Branch **main**, folder **`/docs`** (recommended) or **`/ (root)`** — both work: mirrors exist at repo-root `preview.html` + `index.html` and `docs/preview.html` + `docs/index.html`, with `.nojekyll` in both folders. 4. Wait 1–2 min, check the Actions "pages build and deployment" run, then open all three — each must return 200: `https://m0-ar.github.io/stock-100-terms-validation-2026/` · `https://m0-ar.github.io/stock-100-terms-validation-2026/preview.html` · `https://m0-ar.github.io/stock-100-terms-validation-2026/docs/preview.html`. Why mirrors: with source `/`, repo `docs/x.html` serves at `/docs/x.html`; with source `/docs`, the same file serves at `/x.html` — so one canonical page plus mirrors resolves under either setting.
 
 ## References (abridged — full URLs in `docs/EVIDENCE.md`)
 
