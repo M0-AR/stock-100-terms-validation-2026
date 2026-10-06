@@ -1,0 +1,20 @@
+services:
+  research:
+    build: .
+    container_name: stock-100-terms-2026
+    volumes:
+      - ./src/results:/app/src/results
+      - ./docs:/app/docs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=UTC
+    command: python3 src/experiments/run_all.py
+  notebook:
+    build: .
+    container_name: stock-100-terms-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    command: bash -c "pip install jupyter && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''"
+    profiles: ["notebook"]

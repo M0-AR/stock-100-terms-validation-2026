@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock 100 Terms — From Words to Proof (Interactive Preview)</title>
+<meta name="description" content="Learn 100+ stock-market terms from zero to pro, see every claim tested on 5 years of live market data, and prove it to yourself with an interactive quiz.">
+<style>
+:root{--bg:#0b1220;--panel:#111c33;--panel2:#0e1830;--line:#22345c;--txt:#eaf0ff;--mut:#9fb0d0;--acc:#4cc38a;--acc2:#6aa8ff;--warn:#ffb454;--bad:#ff6b6b;--radius:16px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% -10%,#16295a 0%,var(--bg) 55%) fixed,var(--bg);color:var(--txt);line-height:1.6}
+a{color:var(--acc2)}.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 80px}
+.hero{background:linear-gradient(180deg,rgba(76,195,138,.12),rgba(106,168,255,.08));border:1px solid var(--line);border-radius:22px;padding:30px 26px;margin:10px 0 22px}
+.hero h1{margin:.2em 0;font-size:clamp(26px,4vw,42px);line-height:1.15}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.badges span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:12px;color:var(--mut);background:#0d1730}
+.ceo{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:16px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.kpi{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px}.kpi b{font-size:20px;display:block}.kpi small{color:var(--mut)}
+.btn{display:inline-block;background:var(--acc);color:#06130d;font-weight:700;border-radius:12px;padding:12px 18px;text-decoration:none;margin:6px 8px 6px 0}.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:12px 0}
+.card h2,.card h3{margin-top:0}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}th{color:var(--mut);font-weight:600}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tabs button{background:#0d1730;color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;font-size:13px}.tabs button.on{background:var(--acc2);color:#08122b;border-color:var(--acc2);font-weight:700}
+canvas{max-width:100%}.note{color:var(--mut);font-size:13px}.ok{color:var(--acc)}.bad{color:var(--bad)}.quizQ{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}.quizQ h4{margin:0 0 8px}.opt{display:block;width:100%;text-align:left;background:#0d1730;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:10px;margin:6px 0;cursor:pointer}.opt.correct{border-color:var(--acc);background:rgba(76,195,138,.15)}.opt.wrong{border-color:var(--bad);background:rgba(255,107,107,.12)}.opt:disabled{opacity:.85;cursor:default}.explain{font-size:13px;color:var(--mut)}.progress{height:10px;background:#0d1730;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0}
+footer{color:var(--mut);font-size:13px;margin-top:26px}.toc a{display:inline-block;margin:3px 10px 3px 0;font-size:14px}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+<div class="badges"><span>MIT</span><span>Python 3.12</span><span>Docker ready</span><span>5y live data</span><span>15-question quiz</span><span>Not financial advice</span></div>
+<h1>From 100 Terms to Testable Claims 📈</h1>
+<p><b>A beginner-to-pro stock-market repo where every lesson is tested on real prices.</b> Read plain explanations, see the backtests, run them yourself, and finish the quiz to prove you learned it.</p>
+<div class="ceo card" style="margin:12px 0">
+<b>CEO summary (30 seconds):</b>
+1) Lump-sum investing beat monthly drip-feeding in <b>81.2%</b> of past year-long windows (+6.6% median). &nbsp;
+2) Holding the S&amp;P 500 (CAGR <b>13.88%</b>) beats most stock-picking; only <b>3 of 6</b> famous stocks beat it here, and 92.6% of pros trail it over 20 years. &nbsp;
+3) Waiting for dips cost <b>−21.8%</b> vs simply holding. &nbsp;
+4) Mixing in gold/defensive stocks raised risk-adjusted return (Sharpe <b>0.59 → 0.94</b>) and cut worst loss (−24.5% → −16.9%). &nbsp;
+5) The market is concentrated: top-3 giants = <b>88.7%</b> of our basket; one P/E is <b>353</b> vs another at <b>26</b> — know what you own.
+</div>
+<p>
+<a class="btn" href="#quiz">🎓 Start the quiz — zero to pro</a>
+<a class="btn ghost" href="#quickstart">⚡ Run it in 2 minutes</a>
+<a class="btn ghost" href="#dashboard">📊 See the proof</a>
+</p>
+<p class="note">Live snapshot 2026-10-06: SPY $779.44 · AAPL $333.92 · MSFT $535.00 · NVDA $241.88 · TSLA $381.38 · KO $86.85 · BTC $86,098 · USD→EUR 0.887, JPY ¥158.09 · Window 2021-10-06 → 2026-10-06 (1,827 rows).</p>
+</div>
+
+<div class="card toc"><b>Contents:</b><br>
+<a href="#beginner">🌱 Beginner guide</a><a href="#features">✨ Features</a><a href="#stories">👥 Who is this for</a><a href="#dashboard">📊 Results dashboard</a><a href="#quiz">🎓 Quiz</a><a href="#quickstart">⚡ Quickstart</a><a href="#methods">🔬 Methods</a><a href="#screenshots">🖼️ Screenshots &amp; video</a><a href="#pages">🌐 GitHub Pages</a><a href="#limits">⚠️ Limits</a>
+</div>
+
+<div class="kpis">
+<div class="kpi"><small>Lump-sum win rate</small><b class="ok">81.2%</b><small>48 rolling 12-mo windows</small></div>
+<div class="kpi"><small>Buy-the-dip vs hold (SPY)</small><b class="bad">−21.78%</b><small>dip-timer trails</small></div>
+<div class="kpi"><small>Sharpe 100% SPY → diversified</small><b class="ok">0.59 → 0.94</b><small>drawdown −24.5% → −16.9%</small></div>
+<div class="kpi"><small>Top-3 concentration</small><b>88.7%</b><small>NVDA 35.3 · AAPL 29.4 · MSFT 24.0</small></div>
+<div class="kpi"><small>P/E spread (TSLA vs KO)</small><b>353.1 vs 26.1</b><small>spread 327.0</small></div>
+<div class="kpi"><small>SPY–gold / SPY–BTC corr</small><b>0.16 / 0.41</b><small>gold diversifies; BTC is risk-on</small></div>
+</div>
+
+<div class="card" id="beginner">
+<h2>🌱 Beginner guide — read this and you are a professional</h2>
+<p><i>Let's work this out in a step-by-step way to be sure we have the right answer.</i> No background needed. Each idea is one sentence, one example, one number from the tests.</p>
+<details open><summary>Step 1 — What is a stock? (own a slice)</summary>
+<p>A <b>stock</b> is a slice of a company. <b>Common</b> stock votes and may pay a <b>dividend</b> (cash share of profit); <b>preferred</b> usually pays a fixed dividend first but does not vote. A <b>portfolio</b> is all your slices together. Only <b>listed (public)</b> companies trade on an <b>exchange</b> (e.g. NYSE) via a <b>broker</b> who charges a <b>commission</b>. Each stock has a <b>ticker</b> (AAPL, TSLA). An <b>index</b> like the S&amp;P 500 bundles 500 giants as the benchmark — <b>outperforming</b> means beating it. <b>Volume/liquidity</b> = how easily you can buy/sell without moving the price (Apple = high; tiny stocks = low).</p>
+<p class="note">Proof link: our basket holds AAPL/MSFT/NVDA/TSLA/KO against SPY — see dashboard.</p></details>
+<details><summary>Step 2 — Is the company healthy? (5 numbers)</summary>
+<p><b>Market cap</b> = price × shares. <b>Enterprise value</b> adds debt, subtracts cash (the full takeover bill). <b>Revenue</b> is sales; <b>net profit</b> is what remains. <b>EPS</b> = profit per share; <b>P/E</b> = price ÷ EPS (high = expensive). <b>PEG</b> adjusts for growth. <b>Dividend yield</b> = yearly dividend ÷ price. <b>Free cash flow</b> = cash left for dividends/buybacks/growth. <b>Margins</b> (gross → operating → net) show profit per $1 of sales.</p>
+<p class="note">Example verified: Apple 2025 revenue $416.2B (+6.4%), net margin <b>26.9%</b>; live P/Es — TSLA <b>353.1</b> (priced for perfection) vs KO <b>26.1</b> (steady).</p></details>
+<details><summary>Step 3 — What flavor? (growth, value, defensive)</summary>
+<p><b>Growth</b> reinvests and races (NVDA); <b>value</b> looks cheap vs fundamentals; <b>blue-chip</b> is a trusted giant (Coca-Cola); <b>cyclical</b> swings with the economy (cars, airlines); <b>defensive</b> sells what people always buy (food, utilities, healthcare). Size: large &gt;$10B, mid $2–10B, small &lt;$2B, <b>penny</b> &lt;$5 (lottery tickets — usually a bad idea).</p></details>
+<details><summary>Step 4 — What else can I buy? (funds, gold, bonds, FX, crypto)</summary>
+<p><b>Mutual fund</b> = pooled basket with a manager; <b>ETF</b> = basket trading live like a stock; <b>index fund</b> copies an index (the S&amp;P 500 ETF is the default); <b>hedge fund</b> uses fancy/risky tricks for the wealthy. Also: <b>commodities</b> (gold/oil), <b>bonds</b> (lend, earn interest, get principal at <b>maturity</b>), <b>currencies</b> (dollar/euro/yen), <b>crypto</b> (Bitcoin/Ethereum — volatile, equity-linked here: corr <b>0.41</b>).</p></details>
+<details><summary>Step 5 — Why do prices jump? (mood + regimes)</summary>
+<p><b>Volatility</b> = bumpiness; <b>VIX</b> = expected next-30-day bumpiness (the "fear index"). <b>Bull</b> = long rise (optimism); <b>bear</b> = long fall (fear). <b>Correction</b> = −10%; <b>rally</b> = sharp bounce; <b>crash</b> = sudden plunge; <b>bubble</b> = hype that pops. <b>Sentiment</b> often moves prices more than fundamentals short-term.</p></details>
+<details><summary>Step 6 — How should I invest? (the 3 answers that survived testing)</summary>
+<p><b>Passive</b> (buy the whole market, hold, keep fees low) vs <b>active</b> (pick + trade a lot — usually loses after fees). <b>Invest everything now (lump-sum)</b> beats <b>drip-feeding (DCA)</b> most of the time (<b>81.2%</b> here) because markets rise ~7 years in 10 — waiting in cash costs you. <b>Buy-and-hold + compounding</b> (gains earn gains) beats <b>buy-the-dip timing</b> (−21.8% gap) and <b>market timing/speculation</b>. DCA is still fine as a habit from each paycheck, or as courage-training for nervous beginners (6 months max). <b>Fundamental</b> = study the business; <b>technical</b> = study charts/volume; <b>macro</b> = study rates/inflation/growth.</p></details>
+<details><summary>Step 7 — Company events &amp; paydays</summary>
+<p><b>IPO</b> = first public sale; <b>secondary offering</b> = more shares later; <b>buyback</b> = company buys its own shares (fewer left, each worth more); <b>split</b> 2-for-1 = twice the shares at half price (same pie); <b>reverse split</b> = the opposite; <b>acquisition</b> = one company buys another (target usually jumps). <b>Ex-div date</b> = must own before this to get the dividend; <b>pay date</b> = cash arrives. <b>Insider trading</b> on secret info = crime.</p></details>
+<details><summary>Step 8 — Don't lose it all (risk in one page)</summary>
+<p><b>Diversify</b> (spread across stocks/sectors/assets), <b>allocate</b> (split stocks/bonds/cash to your goal), <b>rebalance</b> (reset percentages yearly). <b>Alpha</b> = beating the market; <b>beta</b> = moving with the market (1.0 = same, 0.65 = calmer); <b>Sharpe</b> = return per unit of risk (higher = better sleep); <b>correlation</b> = do two assets zig together (gold 0.16 = good diversifier). <b>Systematic</b> risk (recession, rates, politics) hits all; <b>unsystematic</b> (bad CEO, failed product) can be diversified away.</p>
+<p class="note">Proof: 60/40 SPY/gold beta <b>0.67</b>, Sharpe <b>0.86</b>, worst loss −18.7% vs −24.5% for all-stocks.</p></details>
+<details><summary>Step 9 — The economy behind it (60 seconds)</summary>
+<p><b>Inflation</b> = money buys less; <b>deflation</b> = prices fall (people wait, economy stalls); <b>stagflation</b> = high prices + no jobs (painful). <b>Monetary policy</b> (central bank): cut rates → stimulate; raise → cool down. <b>Fiscal policy</b> (government): spend/build → expand; cut back → austerity.</p></details>
+<p><a class="btn" href="#quiz">Test yourself now →</a></p>
+</div>
+
+<div class="card" id="features">
+<h2>✨ Features — what this repo does</h2>
+<ul>
+<li><b>Plain-language course:</b> 100+ terms in 9 parts, each with a one-line definition + a verified number.</li>
+<li><b>Executable proof:</b> 5 experiments (DCA vs lump-sum, passive vs picking, buy-dip, diversification, valuation) on 5y live total-return data.</li>
+<li><b>One-command reproduce:</b> <code>docker compose up --build</code> or <code>python3 src/experiments/run_all.py</code> → <code>src/results/results.json</code>.</li>
+<li><b>Interactive site (this page):</b> charts + progress-saving quiz, deployable free on GitHub Pages.</li>
+<li><b>Honest stats:</b> Sharpe, beta/alpha, max drawdown, correlations, win-rates — with limits stated.</li>
+<li><b>Beginner-first, pro-ready:</b> start at Step 1 above; finish with the PhD roadmap in the README.</li>
+</ul>
+</div>
+
+<div class="card" id="stories">
+<h2>👥 Who is this for — pick your story</h2>
+<table><tr><th>You are…</th><th>Do this</th><th>You get</th></tr>
+<tr><td>🟢 Total beginner</td><td>Read Steps 1–9, take Quiz Level 1</td><td>Speak the market's language in one evening</td></tr>
+<tr><td>🔵 First-time investor</td><td>Study Steps 6+8, Quiz Level 2, run EXP01/EXP04</td><td>A tested default: broad index, hold, diversify</td></tr>
+<tr><td>🟠 Curious skeptic</td><td>Re-run with your tickers/thresholds, Quiz Level 3</td><td>See which "tips" survive your own data</td></tr>
+<tr><td>🔴 Student / researcher</td><td>Full README §§1–8, extend one experiment</td><td>A pilot study with 3 follow-up patterns ready</td></tr>
+<tr><td>🟣 Teacher / community</td><td>Present this page + quiz live, assign screenshots</td><td>A free lesson kit, no sign-up, no backend</td></tr>
+</table>
+</div>
+
+<div class="card" id="dashboard">
+<h2>📊 Results dashboard — every number below is generated, not typed</h2>
+<p class="note">Source: <code>src/results/results.json</code> · 2021-10-06 → 2026-10-06 · rf 4.5% · total-return prices.</p>
+<div class="grid2">
+<div><h3>5-year growth (CAGR %)</h3><canvas id="cCagr"></canvas>
+<table><tr><th>Asset</th><th class="num">CAGR%</th><th class="num">Sharpe</th><th class="num">MaxDD%</th></tr>
+<tr><td>NVDA</td><td class="num">63.66</td><td class="num">1.11</td><td class="num">−66.34</td></tr>
+<tr><td>AAPL</td><td class="num">19.22</td><td class="num">0.83</td><td class="num">−33.36</td></tr>
+<tr><td>GLD</td><td class="num">18.15</td><td class="num">0.88</td><td class="num">−26.40</td></tr>
+<tr><td>SPY</td><td class="num">13.88</td><td class="num">0.49</td><td class="num">−24.50</td></tr>
+<tr><td>MSFT</td><td class="num">13.68</td><td class="num">0.52</td><td class="num">−37.15</td></tr>
+<tr><td>KO</td><td class="num">13.38</td><td class="num">0.80</td><td class="num">−17.27</td></tr>
+<tr><td>TSLA</td><td class="num">7.85</td><td class="num">−0.02</td><td class="num">−73.63</td></tr></table></div>
+<div><h3>Diversification: calmer + stronger here</h3><canvas id="cSharpe"></canvas>
+<table><tr><th>Mix</th><th class="num">CAGR%</th><th class="num">Sharpe</th><th class="num">MaxDD%</th><th class="num">Beta</th></tr>
+<tr><td>100% SPY</td><td class="num">13.69</td><td class="num">0.59</td><td class="num">−24.50</td><td class="num">1.00</td></tr>
+<tr><td>60/40 SPY/gold</td><td class="num">16.27</td><td class="num">0.86</td><td class="num">−18.69</td><td class="num">0.67</td></tr>
+<tr><td>4-asset mix</td><td class="num">17.46</td><td class="num">0.94</td><td class="num">−16.88</td><td class="num">0.65</td></tr></table>
+<p class="note">Gold's strong 18.15% run flatters the hedge — structure + luck, disclosed in README §5.4.</p></div>
+</div>
+<div class="grid2">
+<div><h3>Valuation: who is expensive? (live P/E)</h3><canvas id="cPe"></canvas>
+<p class="note">TSLA 353.1 = priced for perfection (speculative); KO 26.1 = steady (defensive). Spread 327.0.</p></div>
+<div><h3>Concentration: top-3 = 88.7%</h3><canvas id="cConc"></canvas>
+<p class="note">NVDA 35.3 · AAPL 29.4 · MSFT 24.0 · TSLA 9.1 · KO 2.3 (share of this 5-stock basket).</p></div>
+</div>
+<div class="grid2">
+<div><h3>Lump-sum vs drip-feed (48 windows)</h3><canvas id="cDca"></canvas>
+<p><b>Lump-sum won 81.2%</b>, median edge <b>+6.6%</b>. Waiting in cash costs the market's rise (~7 up-years in 10).</p></div>
+<div><h3>Correlations to SPY (lower = better diversifier)</h3><canvas id="cCorr"></canvas>
+<p>GLD <b>0.16</b> · KO <b>0.26</b> · BTC <b>0.41</b> · TSLA 0.59 · MSFT 0.69 · NVDA 0.71 · AAPL 0.72.</p></div>
+</div>
+</div>
+
+<div class="card" id="quiz">
+<h2>🎓 Interactive quiz — from scratch to pro (15 questions, progress saved)</h2>
+<p class="note">Answers are the definitions + numbers from this page. Your progress stays in this browser (localStorage) — no account, no server. Finish all 3 levels to call yourself pro.</p>
+<div class="progress"><i id="pbar"></i></div>
+<p id="pscore" class="note">Score: 0 / 15 · Level: 🌱 Scratch</p>
+<div class="tabs" id="lvTabs"><button data-lv="1" class="on">🌱 L1 Scratch</button><button data-lv="2">🔧 L2 Builder</button><button data-lv="3">🏆 L3 Pro</button></div>
+<div id="qbox"></div>
+<p><button class="btn ghost" id="resetQ">Reset progress</button></p>
+</div>
+
+<div class="card" id="quickstart">
+<h2>⚡ Quickstart — run the proof in 2 minutes</h2>
+<pre style="background:#0d1730;border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto"><code>git clone &lt;this-repo&gt; &amp;&amp; cd stock-100-terms-validation-2026
+docker compose up --build
+# or without docker:
+pip install -r requirements.txt &amp;&amp; python3 src/experiments/run_all.py
+python3 -m pytest tests -q</code></pre>
+<p>Outputs: <code>src/results/prices.csv</code>, <code>src/results/results.json</code>. Tweak <code>src/config.py</code> (tickers, dip threshold, risk-free rate) and re-run — never hand-edit outputs.</p>
+</div>
+
+<div class="card" id="methods">
+<h2>🔬 Methods (one paragraph each)</h2>
+<ul>
+<li><b>Total-return prices</b> (split/dividend-adjusted, repaired) — gains include dividends, not just price.</li>
+<li><b>No peeking:</b> dip signals use only past 20 days, invested next day; drip-feed tranches compound forward only.</li>
+<li><b>Cash earns 4.5%</b> while waiting (today's savings/T-bill reality); fees/taxes omitted (this favors stock-picking, so index wins are conservative).</li>
+<li><b>Survivorship disclosed:</b> we test famous survivors — long-run inference uses the survivorship-corrected 20-year base rate (92.6% of pros trail).</li>
+<li><b>Risk math:</b> CAGR (yearly growth), volatility, Sharpe (return per risk), max drawdown (worst fall), beta (market sensitivity), alpha (excess), correlation (move together?).</li>
+</ul>
+</div>
+
+<div class="card" id="screenshots">
+<h2>🖼️ Screenshots &amp; video demo</h2>
+<p>This page <i>is</i> the demo — it runs from one file with no backend. Screenshots live in <code>docs/showcase/</code> and refresh with one command (see README). Video: GitHub READMEs play <b>GIFs inline</b> and link out for full video — so we ship a looping <code>docs/demo/demo.gif</code> (≤5 MB) at the top of the README plus this full interactive page (and an MP4 walkthrough) linked from the thumbnail. No external hosting required.</p>
+<p><a class="btn ghost" href="#dashboard">Open the live charts ↑</a> <a class="btn ghost" href="#quiz">Jump to quiz ↑</a></p>
+</div>
+
+<div class="card" id="pages">
+<h2>🌐 GitHub Pages — publish this page free (2 minutes, 2026 flow)</h2>
+<ol>
+<li>Push this repo to GitHub.</li>
+<li>Open <b>Settings → Pages</b>.</li>
+<li>Under <b>Build and deployment → Source</b> choose <b>Deploy from a branch</b>.</li>
+<li>Branch: <b>main</b>, folder: <b>/ (root)</b> — or <b>/docs</b> if you move this file there — then <b>Save</b>.</li>
+<li>Wait ~1 minute → your site is live at <code>https://&lt;you&gt;.github.io/&lt;repo&gt;/preview.html</code>. Link it at the top of the README.</li>
+</ol>
+<p class="note">Why this works: this file needs no build step (single HTML + CDN charts + vanilla JS). The <code>.nojekyll</code> file in the repo root keeps Pages serving it exactly as-is.</p>
+</div>
+
+<div class="card" id="limits">
+<h2>⚠️ Limits — read before quoting us</h2>
+<p>One 5-year US-led window; 8 tickers; no trading costs/taxes; gold stands in for bonds imperfectly; penny stocks and local-exchange (EGX) tests are future work. Results describe the past; they do not predict or advise. Educational purpose only.</p>
+</div>
+
+<footer>MIT · Reproduce: <code>docker compose up --build</code> · Data: market prices + SEC filings, 2021-10-06 → 2026-10-06 · Educational content, not financial advice.</footer>
+</div>
+
+<script>
+const QUIZ=[
+{lv:1,q:"A stock is…",o:["A loan to a company","A slice of ownership in a company","A bank account","A coupon"],a:1,e:"Owning a stock = owning part of the business, its profits and votes (common) or fixed dividends (preferred)."},
+{lv:1,q:"An index like the S&P 500 is…",o:["One company's price","A bundle of stocks used as a benchmark","A broker's fee","A bond's maturity"],a:1,e:"Indices bundle many stocks to represent the market. 'Beating the market' = beating the S&P 500."},
+{lv:1,q:"A dividend is…",o:["Cash a company pays owners from profit","A loan repayment","A trading fee","A tax"],a:0,e:"Dividends are cash distributions — not guaranteed for common stock."},
+{lv:1,q:"High liquidity means…",o:["You must hold for years","You can buy/sell easily without moving the price","The price never moves","Dividends are high"],a:1,e:"Apple/Microsoft = high-liquidity; tiny stocks = low (your sale moves the price)."},
+{lv:1,q:"P/E = 353 (TSLA) vs 26 (KO) tells you…",o:["Nothing","TSLA is priced far more expensively per $1 of earnings","KO is riskier","Both pay the same dividend"],a:1,e:"Verified live snapshot: spread 327. High P/E = high expectations (and high fall risk)."},
+{lv:2,q:"Lump-sum vs drip-feed (DCA): what did 48 past year-windows show?",o:["DCA always won","Lump-sum won 81.2%, median +6.6%","They tied","DCA won 81.2%"],a:1,e:"Money invested sooner captures more up-years (~7 in 10). Waiting in cash has a measurable cost."},
+{lv:2,q:"Mechanical buy-the-dip (−5% rule) vs buy-and-hold on SPY gave…",o:["+21.8% extra","−21.78% (trailed)","Identical results","No trades"],a:1,e:"Only 13.4% time-in-market; timing forfeits compounding. On TSLA: −64.74%."},
+{lv:2,q:"Which mix had the best risk-adjusted return (Sharpe)?",o:["100% SPY (0.59)","60/40 SPY/gold (0.86)","4-asset mix (0.94)","All equal"],a:2,e:"Diversification cut worst loss −24.5% → −16.9% and beta 1.0 → 0.65."},
+{lv:2,q:"Best diversifier vs SPY here?",o:["AAPL (0.72)","BTC (0.41)","Gold GLD (0.16)","NVDA (0.71)"],a:2,e:"Lower correlation = better cushion. BTC at 0.41 is risk-on, not a hedge."},
+{lv:2,q:"A stock split 2-for-1 does what?",o:["Doubles your wealth","Twice the shares at half price — same pie","Pays a dividend","Delists the company"],a:1,e:"Splits change share count, not value. Buybacks (fewer shares) can support per-share value."},
+{lv:3,q:"Why is our '3 of 6 beat SPY' NOT proof picking is easy?",o:["It is proof","N=6 famous survivors in a mega-cap bull — biased sample","Math error","SPY was delisted"],a:1,e:"Unbiased base rate: 92.6% of active funds trail over 20 years; persistence ≈ coin-flip."},
+{lv:3,q:"Top-3 concentration 88.7% implies…",o:["Perfect diversification","A few giants drive the basket — single-stock shocks matter","Bonds dominate","No risk"],a:1,e:"NVDA 35.3 + AAPL 29.4 + MSFT 24.0. Concentration is the H5 risk lesson."},
+{lv:3,q:"Alpha vs beta:",o:["Same thing","Alpha = beating the market; beta = moving with it","Beta = dividends","Alpha = fees"],a:1,e:"60/40 beta 0.67 (calmer), alpha +6.64pp (excess) on this window."},
+{lv:3,q:"Systematic vs unsystematic risk:",o:["Identical","Systematic hits all (recession/rates); unsystematic is firm-specific and diversifiable","Only crypto has risk","Risk can be eliminated fully"],a:1,e:"Diversification kills unsystematic risk, not market-wide risk."},
+{lv:3,q:"Best default from this evidence?",o:["Day-trade penny stocks","Broad index, hold years, diversify, keep costs low","Wait in cash for the perfect dip","Borrow to buy crypto"],a:1,e:"Time-in-market + compounding + diversification survived every test. Not advice — your call."}
+];
+let state={lvl:1,score:0,done:{}};
+try{state=Object.assign(state,JSON.parse(localStorage.getItem("q100")||"{}"))}catch(e){}
+const box=document.getElementById("qbox"),bar=document.getElementById("pbar"),ps=document.getElementById("pscore");
+function save(){localStorage.setItem("q100",JSON.stringify(state))}
+function render(){
+  const qs=QUIZ.filter(q=>q.lv===state.lvl);
+  const total=QUIZ.length, ndone=Object.keys(state.done).length;
+  bar.style.width=(ndone/total*100)+"%";
+  const names={1:"🌱 Scratch",2:"🔧 Builder",3:"🏆 Pro"};
+  ps.textContent=`Score: ${state.score} / ${total} · Level: ${names[state.lvl]} · Completed ${ndone}/${total}`;
+  box.innerHTML="";
+  qs.forEach((q,i)=>{
+    const gi=QUIZ.indexOf(q), d=document.createElement("div");d.className="quizQ";
+    d.innerHTML=`<h4>Q${gi+1}. ${q.q}</h4>`;
+    q.o.forEach((op,j)=>{
+      const b=document.createElement("button");b.className="opt";b.textContent=op;
+      const prev=state.done[gi];
+      if(prev!==undefined){b.disabled=true;if(j===q.a)b.classList.add("correct");else if(j===prev)b.classList.add("wrong")}
+      b.onclick=()=>{state.done[gi]=j;if(j===q.a)state.score++;save();render()};
+      d.appendChild(b);
+    });
+    const p=document.createElement("p");p.className="explain";
+    p.textContent=(state.done[gi]!==undefined)?((state.done[gi]===q.a?"✅ Correct. ":"❌ Not quite. ")+q.e):"Pick one — explanation appears after you answer.";
+    d.appendChild(p);box.appendChild(d);
+  });
+  if(ndone===total){const c=document.createElement("div");c.className="card";c.innerHTML=`<h3>🏁 Finished: ${state.score}/${total}</h3><p>${state.score>=13?"Pro. You can explain every section of this repo to someone else.":state.score>=9?"Strong builder. Re-read Steps 6+8 and retry Level 3.":"Good start. Re-read the beginner guide above, then retry."}</p>`;box.appendChild(c)}
+}
+document.querySelectorAll("#lvTabs button").forEach(b=>b.onclick=()=>{state.lvl=+b.dataset.lv;document.querySelectorAll("#lvTabs button").forEach(x=>x.classList.toggle("on",x===b));render()});
+document.getElementById("resetQ").onclick=()=>{state={lvl:1,score:0,done:{}};save();render()};
+document.querySelector(`#lvTabs button[data-lv="${state.lvl}"]`)?.classList.add("on");render();
+
+// Charts (verified numbers from src/results/results.json)
+const grid={color:"rgba(160,180,220,.15)"};
+function mk(id,cfg){new Chart(document.getElementById(id),cfg)}
+mk("cCagr",{type:"bar",data:{labels:["NVDA","AAPL","GLD","SPY","MSFT","KO","TSLA"],datasets:[{data:[63.66,19.22,18.15,13.88,13.68,13.38,7.85],backgroundColor:["#4cc38a","#6aa8ff","#ffb454","#8b93ff","#6aa8ff","#4cc38a","#ff6b6b"]}]},options:{plugins:{legend:{display:false}},scales:{y:{grid, ticks:{color:"#9fb0d0"}},x:{grid:{display:false},ticks:{color:"#eaf0ff"}}}}});
+mk("cSharpe",{type:"bar",data:{labels:["100% SPY","60/40","4-asset"],datasets:[{label:"Sharpe",data:[0.59,0.86,0.94],backgroundColor:"#4cc38a"},{label:"MaxDD %",data:[-24.5,-18.69,-16.88],backgroundColor:"#ff6b6b"}]},options:{plugins:{legend:{labels:{color:"#eaf0ff"}}},scales:{y:{grid,ticks:{color:"#9fb0d0"}},x:{ticks:{color:"#eaf0ff"}}}}});
+mk("cPe",{type:"bar",data:{labels:["TSLA","AAPL","NVDA","MSFT","KO"],datasets:[{data:[353.1,38.3,30.6,29.8,26.1],backgroundColor:["#ff6b6b","#ffb454","#ffb454","#ffb454","#4cc38a"]}]},options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{grid,ticks:{color:"#9fb0d0"}},y:{ticks:{color:"#eaf0ff"}}}}});
+mk("cConc",{type:"doughnut",data:{labels:["NVDA 35.3%","AAPL 29.4%","MSFT 24.0%","TSLA 9.1%","KO 2.3%"],datasets:[{data:[35.3,29.4,24.0,9.1,2.3],backgroundColor:["#4cc38a","#6aa8ff","#8b93ff","#ffb454","#3a4a6b"]}]},options:{plugins:{legend:{labels:{color:"#eaf0ff"}}}}});
+mk("cDca",{type:"doughnut",data:{labels:["Lump-sum wins 81.2%","DCA wins 18.8%"],datasets:[{data:[81.2,18.8],backgroundColor:["#4cc38a","#3a4a6b"]}]},options:{plugins:{legend:{labels:{color:"#eaf0ff"}}}}});
+mk("cCorr",{type:"bar",data:{labels:["GLD","KO","BTC","TSLA","MSFT","NVDA","AAPL"],datasets:[{data:[0.16,0.26,0.41,0.59,0.69,0.71,0.72],backgroundColor:["#4cc38a","#4cc38a","#ffb454","#8b93ff","#8b93ff","#8b93ff","#8b93ff"]}]},options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{min:0,max:1,grid,ticks:{color:"#9fb0d0"}},y:{ticks:{color:"#eaf0ff"}}}}});
+</script>
+</body>
+</html>

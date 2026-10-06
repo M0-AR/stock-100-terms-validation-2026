@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "source": "yfinance-per-ticker",
+    "nan_rate": 0.27394636015325674,
+    "rows": 1827,
+    "tickers": [
+      "SPY",
+      "AAPL",
+      "MSFT",
+      "NVDA",
+      "TSLA",
+      "KO",
+      "GLD",
+      "BTC-USD"
+    ],
+    "start": "2021-10-06",
+    "end": "2026-10-06"
+  },
+  "EXP01_DCA_vs_Lumpsum_SPY": {
+    "n_windows": 48,
+    "lumpsum_win_rate_pct": 81.2,
+    "median_lumpsum_edge_pct": 6.6,
+    "note": "positive edge = lump-sum ahead (cash-drag quantification)"
+  },
+  "EXP02_Passive_vs_Active": {
+    "SPY": {
+      "CAGR_pct": 13.92,
+      "vol_pct": 17.74,
+      "sharpe": 0.49,
+      "maxDD_pct": -24.5
+    },
+    "AAPL": {
+      "CAGR_pct": 19.17,
+      "vol_pct": 28.42,
+      "sharpe": 0.83,
+      "maxDD_pct": -33.36
+    },
+    "MSFT": {
+      "CAGR_pct": 13.7,
+      "vol_pct": 29.44,
+      "sharpe": 0.52,
+      "maxDD_pct": -37.15
+    },
+    "NVDA": {
+      "CAGR_pct": 63.73,
+      "vol_pct": 52.45,
+      "sharpe": 1.11,
+      "maxDD_pct": -66.34
+    },
+    "TSLA": {
+      "CAGR_pct": 7.85,
+      "vol_pct": 57.8,
+      "sharpe": -0.02,
+      "maxDD_pct": -73.63
+    },
+    "KO": {
+      "CAGR_pct": 13.38,
+      "vol_pct": 16.92,
+      "sharpe": 0.8,
+      "maxDD_pct": -17.27
+    },
+    "GLD": {
+      "CAGR_pct": 18.22,
+      "vol_pct": 18.67,
+      "sharpe": 0.88,
+      "maxDD_pct": -26.4
+    },
+    "ACTIVE_EQW_BASKET": {
+      "CAGR_pct": 19.09,
+      "vol_pct": 23.25,
+      "sharpe": 0.9,
+      "maxDD_pct": -27.15
+    },
+    "summary": {
+      "singles_beating_SPY": "3/6",
+      "basket_vs_SPY_CAGR_gap": 5.17
+    }
+  },
+  "EXP03_BuyDip_SPY": {
+    "buy_hold_terminal": 1.918,
+    "dip_timer_terminal": 1.498,
+    "dip_timer_vs_hold_pct": -21.92,
+    "time_in_market_pct": 13.4,
+    "n_dip_days": 168,
+    "note": "negative gap = dip-timing underperforms buy-hold (cash-drag + whipsaw)"
+  },
+  "EXP03_BuyDip_TSLA": {
+    "buy_hold_terminal": 1.459,
+    "dip_timer_terminal": 0.514,
+    "dip_timer_vs_hold_pct": -64.75,
+    "time_in_market_pct": 63.6,
+    "n_dip_days": 798,
+    "note": "negative gap = dip-timing underperforms buy-hold (cash-drag + whipsaw)"
+  },
+  "EXP04_Diversification": {
+    "100pct_SPY": {
+      "CAGR_pct": 13.73,
+      "vol_pct": 17.15,
+      "sharpe": 0.59,
+      "maxDD_pct": -24.5,
+      "beta_vs_SPY": 1.0,
+      "alpha_ann_pct": 0.0
+    },
+    "60_40_SPY_GLD": {
+      "CAGR_pct": 16.32,
+      "vol_pct": 13.69,
+      "sharpe": 0.86,
+      "maxDD_pct": -18.69,
+      "beta_vs_SPY": 0.67,
+      "alpha_ann_pct": 6.66
+    },
+    "4ASSET_EQW": {
+      "CAGR_pct": 17.48,
+      "vol_pct": 13.61,
+      "sharpe": 0.94,
+      "maxDD_pct": -16.88,
+      "beta_vs_SPY": 0.65,
+      "alpha_ann_pct": 8.05
+    },
+    "correlations": {
+      "SPY_AAPL": 0.72,
+      "SPY_MSFT": 0.69,
+      "SPY_NVDA": 0.71,
+      "SPY_TSLA": 0.59,
+      "SPY_KO": 0.26,
+      "SPY_GLD": 0.16,
+      "SPY_BTC-USD": 0.41
+    }
+  },
+  "EXP05_Valuation_live": {
+    "mcap_shares_pct": {
+      "NVDA": 35.3,
+      "AAPL": 29.4,
+      "MSFT": 24.0,
+      "TSLA": 9.1,
+      "KO": 2.3
+    },
+    "top3_concentration_pct": 88.7,
+    "pe_ttm_live": {
+      "AAPL": 38.281006,
+      "MSFT": 29.804455,
+      "NVDA": 30.579016,
+      "TSLA": 353.12036,
+      "KO": 26.081112
+    },
+    "pe_spread_max_min": 327.0,
+    "AAPL_net_margin_2025_pct": 26.9,
+    "AAPL_rev_growth_2024_2025_pct": 6.4,
+    "style_note": "TSLA P/E >> group (speculative/growth outlier); KO lowest P/E (defensive); NVDA largest mcap (concentration)."
+  }
+}
